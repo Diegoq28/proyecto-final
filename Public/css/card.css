@@ -25,7 +25,7 @@
     transition: all .4s ease-in-out;
     box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.3);
     text-align: center;
-    background: linear-gradient(-135deg,#04ff19, rgb(0, 0, 0));
+    background: linear-gradient(-135deg,#ed785e, rgb(255, 226, 185));
 }
 
 .card:hover{
@@ -193,15 +193,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(90deg, #75ff8c, #1fffff);
+    background: linear-gradient(90deg, #ef7f60, #ffbb3de8);
 }
 
 
-footer {
+/* footer {
     background-color: black;
     position: absolute;
     bottom: 0;
     width: 100%;
     height: 40px;
     color: white;
-}
+  } */
