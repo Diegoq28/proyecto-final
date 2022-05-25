@@ -16,25 +16,28 @@
 
 /*------------------>>>renderisados sencillos<<<----------------*/
 controller.casa=(req,res,next)=>{
-    res.render('login');
+    res.render('registro_asociado');
 }
 
 controller.vistadeusu=(req,res,next)=>{
     res.render('home_usuario');
 }
 
-controller.login=(req,res)=>{
+controller.login=(req,res,next)=>{
     res.render=('login');
 }
 
-controller.resgitrousu=(res,req)=>{
+controller.resgitrousu=(res,req,next)=>{
     res.render=('registro_usu');
 }
 
-/* controller.resgitroaso=(res,req)=>{
+controller.resgitroaso=(res,req)=>{
     res.render=('registro_asociado');
-} */
+} 
 
+controller.redirigisaregistro=(res,req,next)=>{
+    res.redirect('/regtrousu');
+}
 
 /*---------------------------------------------------------------*/
 
@@ -64,11 +67,23 @@ controller.iniciosesion=async(req,res,next)=>{
 
 /*--------------------->>>registro de asociado<<<-----------------*/
 
-    controller.ingresoaso=async(res,req,next)=>{
+    controller.ingresoaso=(res,req,next)=>{
 
-        const docx=req.body.dd;
+        console.log("hola este es el controlador antes");
+        
+        console.log(req.body);
 
-        console.log("hola");
+        //const {dd}=req.body;
+
+        /* const docx=req.body.dd;
+        const nomx=req.body.nn;
+        const apex=req.body.aa;
+        const corx=req.body.cc;
+        const pasx=req.body.pp;
+        const telx=req.body.tt;
+        const dicx=req.body.di; */
+
+        console.log("hola este es el controlador despues");
 
     }
 

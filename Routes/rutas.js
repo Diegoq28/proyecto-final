@@ -14,7 +14,7 @@ rutas.get("/login",controller.login);
 rutas.post("/iniciosesion",controller.iniciosesion);
 
 rutas.get("/regtrousu",controller.resgitrousu);
-
+rutas.get("/r",controller.redirigisaregistro);
 
 /* rutas.get("/regtroaso",controller.registroaso); */
 rutas.post("/ingresarasociado",controller.ingresoaso);
