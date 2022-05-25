@@ -22,9 +22,9 @@
     app.use(session({
         secret: '12345',
         resave: false,
-        saveUninitialized: true
+        saveUninitialized: true,
     }));
-    
+    //app.use(flash());
     app.use(express.urlencoded({extended:true}));
     app.use(require('./Routes/rutas'));
     app.use((err,res,req,next)=>{

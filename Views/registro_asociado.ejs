@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/formulario.css">
     <link rel="stylesheet" href="../css/nav.css">
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/ingrearaso.js"></script>
     <title>Asociado</title>
 </head>
 <body>
@@ -29,34 +32,38 @@
 </header>
 <script src="../js/nav.js"></script>
 
-    <form action="" method="post">
+    <form action="/ingresarasociado" method="post">
         <ul>
+          <li>
+            <label for="name">Documento:</label>
+            <input type="text" id="doc" name="doc">
+          </li>
          <li>
            <label for="name">Nombre:</label>
-           <input type="text" id="name" name="user_name">
+           <input type="text" id="" name="user_name">
          </li>
          <li>
             <label for="mail">Apellido:</label>
-            <input type="email" id="mail" name="user_mail">
+            <input type="text" id="" name="user_ape">
           </li>
           <li>
-            <label for="mail">Servicio:</label>
-            <input type="email" id="mail" name="user_mail">
+            <label for="mail">Correo:</label>
+            <input type="email" id="" name="user_mail">
           </li>
          <li>
-           <label for="mail">Email:</label>
-           <input type="email" id="mail" name="user_mail">
+           <label for="mail">Contraseña:</label>
+           <input type="password" id="" name="user_pass">
          </li>
          <li>
             <label for="mail">Telefono:</label>
-            <input type="email" id="mail" name="user_mail">
+            <input type="text" id="" name="user_tel">
           </li>
           <li>
             <label for="mail">Direccion:</label>
-            <input type="email" id="mail" name="user_mail">
+            <input type="text" id="" name="user_direc">
           </li>
           <li>
-              <input type="submit" value="Ingresar">
+              <input type="button" value="Registrar" id="btn">
           </li>
         </ul>
        </form>

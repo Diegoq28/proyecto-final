@@ -10,35 +10,67 @@
 
 /*---------------------------------------------------------------*/
 
-/*------------------>>>controlador del home<<<---------------------*/
+/*----------------------->>>controladores<<<---------------------*/
 
+
+
+/*------------------>>>renderisados sencillos<<<----------------*/
 controller.casa=(req,res,next)=>{
-    res.render('registro_asociado');
+    res.render('login');
 }
 
-controller.login=async(req,res,next)=>{
-    res.render('login');
-    //const usu=await req.body[0];
-    //const cla=await req.body[1];
-    //console.log(usu+cla);
-    /* cnn.query('SELECT * FROM tl_usuarios  WHERE correo=? AND password=?',[usu,cla],(err,results)=>{
+controller.vistadeusu=(req,res,next)=>{
+    res.render('home_usuario');
+}
+
+controller.login=(req,res)=>{
+    res.render=('login');
+}
+
+controller.resgitrousu=(res,req)=>{
+    res.render=('registro_usu');
+}
+
+/* controller.resgitroaso=(res,req)=>{
+    res.render=('registro_asociado');
+} */
+
+
+/*---------------------------------------------------------------*/
+
+controller.iniciosesion=async(req,res,next)=>{
+    const usu=await req.body.username;
+    const cla=await req.body.password;
+    console.log(usu+" "+cla);
+    
+     cnn.query('SELECT * FROM tl_usuarios  WHERE correo=? AND password=?',[usu,cla],(err,results)=>{
         if(err){
             next(new Error("error de consulta login",err));
             
         }
         else if(results!=0){
-            uss= results[0].nombre_usuario;
+            uss= results[0].nombre;
             console.log(".."+uss);
-            req.session.login=true;
-            res.redirect('/');
+            res.session
+            //console.log(nombres);
+            res.redirect('/vistausu');
                 }
         else{
             //console.log("datos Incorrectos");
             res.redirect('/');
         }
-    }); */
+    }); 
 }
 
+/*--------------------->>>registro de asociado<<<-----------------*/
+
+    controller.ingresoaso=async(res,req,next)=>{
+
+        const docx=req.body.dd;
+
+        console.log("hola");
+
+    }
 
 /*---------------------------------------------------------------*/
 

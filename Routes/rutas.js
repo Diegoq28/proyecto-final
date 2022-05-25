@@ -9,8 +9,18 @@
 
 /*----------------------------->>>Enrutamiento<<<----------------------------*/
 rutas.get("/",controller.casa);
+
 rutas.get("/login",controller.login);
-rutas.post("/",controller.login);
+rutas.post("/iniciosesion",controller.iniciosesion);
+
+rutas.get("/regtrousu",controller.resgitrousu);
+
+
+/* rutas.get("/regtroaso",controller.registroaso); */
+rutas.post("/ingresarasociado",controller.ingresoaso);
+
+
+rutas.get("/vistausu",controller.vistadeusu);
 
 /*---------------------------------------------------------------*/
 
