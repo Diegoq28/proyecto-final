@@ -28,9 +28,9 @@
     app.use(express.urlencoded({extended:true}));
     app.use(express.json());
     app.use(require('./Routes/rutas'));
-        /* app.use((err,res,req,next)=>{
-            //res.send({err:err.message});
-        }) */
+    app.use((err,req,res,next)=>{
+        res.send({err:err.message});
+    });
 
 /*---------------------------------------------------------------*/
 

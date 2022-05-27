@@ -2,7 +2,7 @@
 $(Document).ready(function(){
     $('#btn').on('click',function(){
         console.log("entro a qjr");
-        let btn=$('.btn').index(this);
+        let btn=$('#btn').index(this);
         let doc=$('#doc').eq(btn);
         let nom=$('#nom').eq(btn);
         let ape=$('#ape').eq(btn);
@@ -22,9 +22,9 @@ $(Document).ready(function(){
 
         alert(d+m+a+c+p+t+di);
 
-        const datos={d,m,a,c,p,t,di}
+        //const datos={d,m,a,c,p,t,di}
 
-        fetch('/ingresarasociado',{
+        /* fetch('/ingresarasociado',{
             method:'post',
 
             headers: {
@@ -37,13 +37,13 @@ $(Document).ready(function(){
         })
         
         .then(respse=>respse.json())
-        .catch(error=>console.log(error))
+        .catch(error=>console.log(error)) */
 
-        console.console.log(datos)
-/* $.ajax({
+        //console.console.log(datos)
+$.ajax({
     
     type:"POST",
-    url:'/x',
+    url:'/registraraso',
     data:{
         dd:d,
         mm:m,
@@ -53,6 +53,8 @@ $(Document).ready(function(){
         tt:t,
         di:di
     }
-        }); */
+        });
     });
 });
+
+
