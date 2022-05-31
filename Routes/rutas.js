@@ -16,7 +16,12 @@ rutas.post("/iniciosesion",controller.iniciosesion);
 rutas.get("/vistaregistraraso",controller.vistaregistroasociado);
 rutas.post("/registraraso",controller.registrarasociado);
 
+rutas.get("/vistaregistrousu",controller.vistaregistrousuario);
+rutas.post("/registrarusu",controller.registrarausuario);
+
+rutas.get("/vistsdeaso",controller.vistaaso);
 rutas.get("/vistausu",controller.vistadeusu);
+rutas.get("/vistaadmin",controller.vistaadmin);
 
 /*---------------------------------------------------------------*/
 
