@@ -24,7 +24,12 @@ controller.casa=(req,res,next)=>{
 }
 
 controller.vistadeusu=(req,res,next)=>{
-    res.render('home_usuario');
+    if(req.session.nombre===undefined){
+        res.redirect('/')
+    }
+    else{
+        res.render('home_usuario',{nombre: req.session.nombre});
+    }
 }
 
 controller.vistaaso=(req,res,next)=>{
@@ -65,13 +70,15 @@ controller.iniciosesion=async(req,res,next)=>{
         else if(results!=0){
             uss= results[0].nombre;
             rol=results[0].rol;
+
+            req.session.nombre=uss;
             console.log(rol+".."+uss);
             //res.redirect('vistausu');
             if(rol=="Asociado"){
-                res.redirect('vistausu');
+                res.redirect('vistsdeaso');
             }
             else if(rol=="Cliente"){
-                res.redirect('vistsdeaso');
+                res.redirect('vistausu');
             }
             else{
                 res.redirect('vistaadmin');
