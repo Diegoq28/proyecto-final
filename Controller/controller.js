@@ -52,7 +52,9 @@ controller.vistaregistrousuario=(req,res,next)=>{
     res.render('registro_usu');
 }
 
-
+controller.vistaregser=(req,res,next)=>{
+    res.render('reg_servicio');
+}
 
 
 /*---------------------------------------------------------------*/
@@ -163,8 +165,30 @@ controller.registrarausuario=(req,res,next)=>{
     
 }
 
-/*---------------------------------------------------------------*/
+/*-------------------------Insert de Servicios--------------------------------------*/
+controller.registroservicio=(req,res,next)=>{
+    const ids=req.body.ids;
+    const nom=req.body.nom_ser;
+    const doc=req.body.doc;
+    const cat=req.body.Categorias;
+    const des=req.body.des;
+    const val=req.body.val;
+    console.log(doc+nom+ids);
 
+        cnn.query('INSERT INTO tl_servicio SET?',{id_servicio:ids,nombre_serv:nom,documento:doc,categoria:cat,descripcion:des,valor_sev:val},(err,resdb)=>{
+            if(err){
+                console.log("error al insertar el servicio");
+                next(new Error(err))
+                res.redirect('vistaregser');
+            }
+            else{
+                console.log("Servicio Insertado");
+                res.redirect('login');
+            }
+        })
+
+    
+}
 /*------------------>>>exportar controlador<<<-------------------*/
 module.exports=controller;
 /*---------------------------------------------------------------*/
