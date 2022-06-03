@@ -28,7 +28,10 @@ controller.vistadeusu=(req,res,next)=>{
         res.redirect('/')
     }
     else{
-        res.render('home_usuario',{nombre: req.session.nombre});
+        res.render('home_usuario',{
+            nombre: req.session.nombre,
+            documento:req.session.documento
+        });
     }
 }
 
@@ -37,7 +40,13 @@ controller.vistaaso=(req,res,next)=>{
 }
 
 controller.vistaadmin=(req,res,next)=>{
-    res.render('home_administrador');
+    if(req.session.nombre===undefined){
+        res.redirect('login')
+    }
+    else{
+        res.render('home_administrador',{nombre: req.session.nombre,documento:req.session.documento});
+    }
+    
 }
 
 controller.login=(req,res,next)=>{
@@ -70,9 +79,11 @@ controller.iniciosesion=async(req,res,next)=>{
         else if(results!=0){
             uss= results[0].nombre;
             rol=results[0].rol;
+            doc=results[0].documento;
 
-            req.session.nombre=uss;
-            console.log(rol+".."+uss);
+            req.session.documento=results[0].documento;
+            req.session.nombre=results[0].nombre;
+            console.log(rol+".."+uss+".."+doc);
             //res.redirect('vistausu');
             if(rol=="Asociado"){
                 res.redirect('vistsdeaso');
@@ -163,6 +174,24 @@ controller.registrarausuario=(req,res,next)=>{
     
 }
 
+/*---------------------------------------------------------------*/
+
+/*---------------->>>editar datos personales<<<------------------*/
+controller.editardatosperonales=(req,res,next)=>{
+    documento=req.session.documento;
+    cnn.query('select * from tl_usuario WHERE documento="'+documento+'"',(err,resbd)=>{
+        if(err){
+            next(new Error(err))
+            //console.log("error en la consulta")
+
+        }
+        else{
+            //console.log(resbd)
+
+            res.render('',{datos:resbd})
+        }
+    })
+}
 /*---------------------------------------------------------------*/
 
 /*------------------>>>exportar controlador<<<-------------------*/
