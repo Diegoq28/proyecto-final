@@ -181,7 +181,7 @@ controller.registroservicio=(req,res,next)=>{
     const ids=req.body.ids;
     const nom=req.body.nom_ser;
     const doc=req.body.doc;
-    const cat=req.body.Categorias;
+    const cat=req.body.categoria;
     const des=req.body.des;
     const val=req.body.val;
     console.log(doc+nom+ids);
@@ -189,12 +189,12 @@ controller.registroservicio=(req,res,next)=>{
         cnn.query('INSERT INTO tl_servicio SET?',{id_servicio:ids,nombre_serv:nom,documento:doc,categoria:cat,descripcion:des,valor_sev:val},(err,resdb)=>{
             if(err){
                 console.log("error al insertar el servicio");
-                next(new Error(err))
+                throw err;
                 res.redirect('vistaregser');
             }
             else{
                 console.log("Servicio Insertado");
-                res.redirect('login');
+                res.redirect('vistsdeaso');
             }
         })
     }
