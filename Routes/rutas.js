@@ -19,9 +19,15 @@ rutas.post("/registraraso",controller.registrarasociado);
 rutas.get("/vistaregistrousu",controller.vistaregistrousuario);
 rutas.post("/registrarusu",controller.registrarausuario);
 
+rutas.get("/vistaregser",controller.vistaregser);
+rutas.post("/registroservi",controller.registroservicio);
+
 rutas.get("/vistsdeaso",controller.vistaaso);
 rutas.get("/vistausu",controller.vistadeusu);
 rutas.get("/vistaadmin",controller.vistaadmin);
+
+
+
 
 /*---------------------------------------------------------------*/
 
