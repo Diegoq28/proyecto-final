@@ -42,7 +42,7 @@ controller.vistaaso=(req,res,next)=>{
         res.redirect('login')
     }
     else{
-        res.render('home_asociado');
+        res.render('home_asociado',{nombre: req.session.nombre});
     }
     
 }
