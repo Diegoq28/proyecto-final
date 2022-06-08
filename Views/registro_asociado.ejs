@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/formulario.css">
     <link rel="stylesheet" href="../css/nav.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <!--     <script src="../js/jquery-3.6.0.min.js"></script>
     <script src="../js/ingrearaso.js"></script>
  -->    <title>Asociado</title>
 </head>
 <body>
   <header class="main-header">
-    <a class="main-logo" href="#">
+    <a class="main-logo" href="/">
     <strong>PreSer</strong>
     </a>
     <nav id="nav" class="main-nav">
@@ -33,22 +33,22 @@
 <script src="../js/nav.js"></script>
 
     <form action="/registraraso" method="post">
-
+        <h2>registrate como Asociado</h2>
             <label for="">Documento:</label>
-            <input type="text" id="doc" name="doc">
+            <input type="text" id="doc" name="doc"  class="form-control">
             <label for="">Nombre:</label>
-            <input type="text" id="nom" name="user_name">
+            <input type="text" id="nom" name="user_name"  class="form-control">
             <label for="">Apellido:</label>
-            <input type="text" id="ape" name="user_ape">
+            <input type="text" id="ape" name="user_ape"  class="form-control">
             <label for="">Correo:</label>
-            <input type="email" id="corr" name="user_mail">
+            <input type="email" id="corr" name="user_mail"  class="form-control">
             <label for="">Contraseña:</label>
-            <input type="password" id="pas" name="user_pass">
+            <input type="password" id="pas" name="user_pass"  class="form-control">
             <label for="">Telefono:</label>
-            <input type="text" id="tel" name="user_tel">
+            <input type="text" id="tel" name="user_tel"  class="form-control">
             <label for="">Direccion:</label>
-            <input type="text" id="dic" name="user_direc">
-                <input type="submit" value="Registrar" id="btn">
+            <input type="text" id="dic" name="user_direc"  class="form-control">
+                <input type="submit" value="Registrar" id="btn" class="btn btn-success">
        </form>
 </body>
 </html>

@@ -28,7 +28,10 @@ controller.vistadeusu=(req,res,next)=>{
         res.redirect('/')
     }
     else{
-        res.render('home_usuario',{nombre: req.session.nombre});
+        res.render('home_usuario',{
+            nombre: req.session.nombre,
+            documento:req.session.documento
+        });
     }
 }
 
@@ -37,7 +40,13 @@ controller.vistaaso=(req,res,next)=>{
 }
 
 controller.vistaadmin=(req,res,next)=>{
-    res.render('home_administrador');
+    if(req.session.nombre===undefined){
+        res.redirect('login')
+    }
+    else{
+        res.render('home_administrador',{nombre: req.session.nombre,documento:req.session.documento});
+    }
+    
 }
 
 controller.login=(req,res,next)=>{
@@ -72,9 +81,11 @@ controller.iniciosesion=async(req,res,next)=>{
         else if(results!=0){
             uss= results[0].nombre;
             rol=results[0].rol;
+            doc=results[0].documento;
 
-            req.session.nombre=uss;
-            console.log(rol+".."+uss);
+            req.session.documento=results[0].documento;
+            req.session.nombre=results[0].nombre;
+            console.log(rol+".."+uss+".."+doc);
             //res.redirect('vistausu');
             if(rol=="Asociado"){
                 res.redirect('vistsdeaso');
@@ -170,7 +181,7 @@ controller.registroservicio=(req,res,next)=>{
     const ids=req.body.ids;
     const nom=req.body.nom_ser;
     const doc=req.body.doc;
-    const cat=req.body.Categorias;
+    const cat=req.body.categoria;
     const des=req.body.des;
     const val=req.body.val;
     console.log(doc+nom+ids);
@@ -178,17 +189,17 @@ controller.registroservicio=(req,res,next)=>{
         cnn.query('INSERT INTO tl_servicio SET?',{id_servicio:ids,nombre_serv:nom,documento:doc,categoria:cat,descripcion:des,valor_sev:val},(err,resdb)=>{
             if(err){
                 console.log("error al insertar el servicio");
-                next(new Error(err))
+                throw err;
                 res.redirect('vistaregser');
             }
             else{
                 console.log("Servicio Insertado");
-                res.redirect('login');
+                res.redirect('vistsdeaso');
             }
         })
+    }
+/*---------------------------------------------------------------*/
 
-    
-}
 /*------------------>>>exportar controlador<<<-------------------*/
 module.exports=controller;
 /*---------------------------------------------------------------*/
