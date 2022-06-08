@@ -30,13 +30,21 @@ controller.vistadeusu=(req,res,next)=>{
     else{
         res.render('home_usuario',{
             nombre: req.session.nombre,
+            apellido: req.session.apellido,
             documento:req.session.documento
         });
     }
 }
 
 controller.vistaaso=(req,res,next)=>{
-    res.render('home_asociado');
+
+    if(req.session.nombre===undefined){
+        res.redirect('login')
+    }
+    else{
+        res.render('home_asociado');
+    }
+    
 }
 
 controller.vistaadmin=(req,res,next)=>{
@@ -44,7 +52,11 @@ controller.vistaadmin=(req,res,next)=>{
         res.redirect('login')
     }
     else{
-        res.render('home_administrador',{nombre: req.session.nombre,documento:req.session.documento});
+        res.render('home_administrador',{
+            nombre: req.session.nombre,
+            apellido: req.session.apellido,
+            documento:req.session.documento
+        });
     }
     
 }
@@ -75,7 +87,10 @@ controller.datospersonales=(req,res,next)=>{
             documento:req.session.documento,
             nombre: req.session.nombre,
             apellido: req.session.apellido,
-            correo:req.session.correo
+            correo:req.session.correo,
+            telefono:req.session.telefono,
+            direccion:req.session.direccion,
+            contra:req.session.pass
         });
     }
     
@@ -103,7 +118,9 @@ controller.iniciosesion=async(req,res,next)=>{
             req.session.apellido=results[0].apellido;
             req.session.correo=results[0].correo;
             req.session.rolusu=results[0].rol;
-            req
+            req.session.telefono=results[0].num_tel;
+            req.session.direccion=results[0].direccion;
+            req.session.pass=results[0].password;
             console.log(rol+".."+uss+".."+doc);
             //res.redirect('vistausu');
             if(rol=="Asociado"){
@@ -124,6 +141,15 @@ controller.iniciosesion=async(req,res,next)=>{
     }); 
 }
 
+/*-------------------------------->>><<<-------------------------------*/
+
+controller.cerrarsesion=(req,res,next)=>{
+    req.session.destroy(()=>{
+        res.redirect('/');
+    });
+}
+
+/*---------------------------------------------------------------*/
 /*--------------------->>>registro de asociado<<<-----------------*/
 
     controller.registrarasociado=(req,res,next)=>{
@@ -222,7 +248,26 @@ controller.registroservicio=(req,res,next)=>{
 /*--------------------->>>modificar datos personales<<<----------*/
 
 controller.actudatospersonales=(req,res,next)=>{
+    const documento=req.body.user_doc;
+    const nombre=req.body.user_name;
+    const apellido=req.body.user_ape;
+    const correo=req.body.user_mail;
+    const telefono=req.body.user_tel;
+    const direccion=req.body.user_direc;
+    rol=req.session.rolusu;
+    console.log(documento+"\n"+nombre+"\n"+apellido+"\n"+correo+"\n"+telefono+"\n"+direccion);
 
+    cnn.query('UPDATE tl_usuarios SET nombre="'+nombre+'",apellido="'+apellido+'",correo="'+correo+'",num_tel="'+telefono+'",direccion="'+direccion+'" WHERE documento="'+documento+'" ',async(err,resdb)=>{
+
+        if(err){
+            console.log("Error al actualizar")
+            res.redirect('datosusuario');
+            throw err;
+        }
+        else{
+                res.redirect('/login');
+        }
+    })
 }
 
 /*---------------------------------------------------------------*/

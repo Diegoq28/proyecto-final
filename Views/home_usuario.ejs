@@ -15,30 +15,8 @@
     <title>Home for PreSer</title>
 </head>
 <body>
-    <!--<header class="main-header">
-        <a class="main-logo" href="#">
-        <strong>Bienvenido: <%=nombre%></strong>
-        </a>
-        
-        <nav id="nav" class="main-nav">
-        <div class="nav-links">
-            <a class="link-item" href="#">link1</a>
-            <a class="link-item" href="#">Link2</a>
-            <a class="link-item" href="#">Cerrar sesion</a>
-<!--             <section>
-                <a class="link-item" href="#"></a>
-            </section> -->
-        </div>
-        </nav>
-        <button id="button-menu" class="button-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </header>-->
-    <script src="../js/nav.js"></script>
-     <!-- Page Wrapper -->
-     <div id="wrapper">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
         <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -66,7 +44,7 @@
                     <i class="fas fa-bomb"></i>
                     <span>Servicios</span>
                 </a>
-               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
                         <a class="collapse-item" href="#">Más Populares</a>
@@ -153,8 +131,7 @@
 
             <!-- Main Content -->
             <div id="content">
-<!--=================================================================NAV PARA LA TOP BAR====================================================-->
-
+<!-- =================================================================NAV PARA LA TOP BAR==================================================== -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
@@ -196,7 +173,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=nombre%></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bienvenido: <%=nombre%> <%=apellido%></span>
                                 <div class="sidebar-brand-icon rotate-n-15">
                                     <i class="fas fa-laugh-wink"></i>
                                 </div>
@@ -204,7 +181,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="/datosusuario">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
                                 </a>
@@ -222,7 +199,6 @@
 
 
                 <!------------------------------MODAL LOGOUT------------------------------------>
-               
                 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -236,14 +212,14 @@
                         <div class="modal-body">Seleciona "Salir" para cerrar sesión y volver al Login, de lo contrario seleciona "Cancelar".</div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                            <a class="btn btn-primary" href="/login">Salir</a>
+                            <a class="btn btn-primary" href="/cerrar">Salir</a>
                         </div>
                     </div>
                 </div>
             </div>
 
 <!--//==============================================================CONTENIDO SERVICIOS=====================================================-->
-   <h2>Categorias mas Populares</h2>
+
     <div class="grancontenedor">
         <div class="contenedor">
             <div class="card">
@@ -251,7 +227,7 @@
                     <img src="https://magazine.joomla.org/images/easyblog_images/637/f32ff9eefb43b2acec245bea9b41330e_XL.jpg" alt="">
                 </div>
                 <div class="card-contenido">
-                    <div class="info-personal desplazar">Gestion De Usuarios</div>
+                    <div class="info-personal desplazar">Mis Contratos</div>
                     <div class="info-personal desplazar">Lorem ipsum dolor sit amet.</div>
                     <div class="info-personal desplazar">
                         <p>Lorem ipsum dolor sit amet consectetur.</p>
@@ -260,8 +236,8 @@
                 </div>
                 <div class="card-acciones">
                     <button class="botones agrandar">
-                        <span class="fas fa-envelope">
-                            <a href="/gestionusuario">Usuarios</a> 
+                        <spam class="fas fa-clipboard"> 
+                        <a href="#"> Mis contratos</a> 
                         </span>
                     </button>
                 </div>
@@ -275,7 +251,7 @@
                     <img src="https://blog.comparasoftware.com/wp-content/uploads/2021/02/tipos-de-clientes-de-ecommerce-1.png" alt="">
                 </div>
                 <div class="card-contenido">
-                    <div class="info-personal desplazar">Gestion De Clientes</div>
+                    <div class="info-personal desplazar">Servicios mejor valorados </div>
                     <div class="info-personal desplazar">Lorem ipsum dolor sit amet.</div>
                     <div class="info-personal desplazar">
                         <p>Lorem ipsum dolor sit amet consectetur.</p>
@@ -299,7 +275,7 @@
                     <img src="https://www.elcolombiano.com/binrepository/1200x800/0c86/1200d627/none/11101/OOIJ/proveedores-empresarios_38710307_20211009175751.jpg" alt="">
                 </div>
                 <div class="card-contenido">
-                    <div class="info-personal desplazar">Gestion De Proveedores</div>
+                    <div class="info-personal desplazar">Categorias Mas Pupulares</div>
                     <div class="info-personal desplazar">Lorem ipsum dolor sit amet.</div>
                     <div class="info-personal desplazar">
                         <p>Lorem ipsum dolor sit amet consectetur.</p>
@@ -319,85 +295,9 @@
     
     </div>
 
-    <h2>Servicis  mas Populares</h2>
-    <div class="grancontenedor">
-        <div class="contenedor">
-            <div class="card">
-                <div class="card-encabezado">
-                    <img src="https://magazine.joomla.org/images/easyblog_images/637/f32ff9eefb43b2acec245bea9b41330e_XL.jpg" alt="">
-                </div>
-                <div class="card-contenido">
-                    <div class="info-personal desplazar">Gestion De Usuarios</div>
-                    <div class="info-personal desplazar">Lorem ipsum dolor sit amet.</div>
-                    <div class="info-personal desplazar">
-                        <p>Lorem ipsum dolor sit amet consectetur.</p>
-                    </div>
-                    
-                </div>
-                <div class="card-acciones">
-                    <button class="botones agrandar">
-                        <span class="fas fa-envelope">
-                            <a href="/gestionusuario">Usuarios</a> 
-                        </span>
-                    </button>
-                </div>
-            </div>
-    
-        </div>
-    
-        <div class="contenedor">
-            <div class="card">
-                <div class="card-encabezado">
-                    <img src="https://blog.comparasoftware.com/wp-content/uploads/2021/02/tipos-de-clientes-de-ecommerce-1.png" alt="">
-                </div>
-                <div class="card-contenido">
-                    <div class="info-personal desplazar">Gestion De Clientes</div>
-                    <div class="info-personal desplazar">Lorem ipsum dolor sit amet.</div>
-                    <div class="info-personal desplazar">
-                        <p>Lorem ipsum dolor sit amet consectetur.</p>
-                    </div>
-                    
-                </div>
-                <div class="card-acciones">
-                    <button class="botones agrandar">
-                        <span class="fas fa-envelope">
-                            <a href="/gestionclientes">clientes</a> 
-                        </span>
-                    </button>
-                </div>
-            </div>
-    
-        </div>
-    
-        <div class="contenedor">
-            <div class="card">
-                <div class="card-encabezado">
-                    <img src="https://www.elcolombiano.com/binrepository/1200x800/0c86/1200d627/none/11101/OOIJ/proveedores-empresarios_38710307_20211009175751.jpg" alt="">
-                </div>
-                <div class="card-contenido">
-                    <div class="info-personal desplazar">Gestion De Proveedores</div>
-                    <div class="info-personal desplazar">Lorem ipsum dolor sit amet.</div>
-                    <div class="info-personal desplazar">
-                        <p>Lorem ipsum dolor sit amet consectetur.</p>
-                    </div>
-                    
-                </div>
-                <div class="card-acciones">
-                    <button class="botones agrandar">
-                        <span class="fas fa-envelope">
-                            <a href="/gestionproveedores">proveedores</a> 
-                        </span>
-                    </button>
-                </div>
-            </div>
-    
-        </div>
-    
-    </div>
 
     <footer>
-        <br><br><br><br><br>
-        <label for="">hola</label>
+        <label for="">©Todos los derechos Reservados</label>
     </footer>
 
     <!-- Bootstrap core JavaScript-->

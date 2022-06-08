@@ -12,6 +12,7 @@ rutas.get("/",controller.casa);
 
 rutas.get("/login",controller.login);
 rutas.post("/iniciosesion",controller.iniciosesion);
+rutas.get("/cerrar",controller.cerrarsesion);
 
 rutas.get("/vistaregistraraso",controller.vistaregistroasociado);
 rutas.post("/registraraso",controller.registrarasociado);
@@ -27,6 +28,8 @@ rutas.get("/vistausu",controller.vistadeusu);
 rutas.get("/vistaadmin",controller.vistaadmin);
 
 rutas.get("/datosusuario",controller.datospersonales);
+rutas.post("/actualizardatos",controller.actudatospersonales);
+
 
 
 /*---------------------------------------------------------------*/
