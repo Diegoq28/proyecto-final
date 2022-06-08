@@ -65,6 +65,21 @@ controller.vistaregser=(req,res,next)=>{
     res.render('reg_servicio');
 }
 
+controller.datospersonales=(req,res,next)=>{
+
+    if(req.session.nombre===undefined){
+        res.redirect('/')
+    }
+    else{
+        res.render('actualizardatospersonales',{
+            documento:req.session.documento,
+            nombre: req.session.nombre,
+            apellido: req.session.apellido,
+            correo:req.session.correo
+        });
+    }
+    
+}
 
 /*---------------------------------------------------------------*/
 
@@ -85,6 +100,10 @@ controller.iniciosesion=async(req,res,next)=>{
 
             req.session.documento=results[0].documento;
             req.session.nombre=results[0].nombre;
+            req.session.apellido=results[0].apellido;
+            req.session.correo=results[0].correo;
+            req.session.rolusu=results[0].rol;
+            req
             console.log(rol+".."+uss+".."+doc);
             //res.redirect('vistausu');
             if(rol=="Asociado"){
@@ -198,6 +217,14 @@ controller.registroservicio=(req,res,next)=>{
             }
         })
     }
+/*---------------------------------------------------------------*/
+
+/*--------------------->>>modificar datos personales<<<----------*/
+
+controller.actudatospersonales=(req,res,next)=>{
+
+}
+
 /*---------------------------------------------------------------*/
 
 /*------------------>>>exportar controlador<<<-------------------*/

@@ -26,7 +26,7 @@ rutas.get("/vistsdeaso",controller.vistaaso);
 rutas.get("/vistausu",controller.vistadeusu);
 rutas.get("/vistaadmin",controller.vistaadmin);
 
-
+rutas.get("/datosusuario",controller.datospersonales);
 
 
 /*---------------------------------------------------------------*/
