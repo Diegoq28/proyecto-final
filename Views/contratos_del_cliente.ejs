@@ -4,58 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/resetstyles.css">
-    <link rel="stylesheet" href="../css/nav.css">
-    <link rel="stylesheet" href="../css/card.css">
-    <link rel="stylesheet" href="../css/home.css">
-    
-    <title>Home for PreSer</title>
+    <title>Document</title>
 </head>
 <body>
-    <header class="main-header">
-        <a class="main-logo" href="#">
-        <strong>PreSer</strong>
-        </a>
-        <nav id="nav" class="main-nav">
-        <div class="nav-links">
-            <a class="link-item" href="#somos">Quienes somos</a>
-            <a class="link-item" href="#funciona">Como Funcionamos</a>
-            <a class="link-item" href="#contacto">Contactanos</a>
-            <a class="link-item" href="/login">Login</a>
-        </div>
-        </nav>
-        <button id="button-menu" class="button-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </header>
-    <script src="../js/nav.js"></script>
+    <h1>contratos de <%=nombre%></h1>
+    <% datos.forEach(function (datos){ %>
+        <div style="border: 1px solid black; margin: 12px; padding: 5px;">
+            <h2>contrato#<%=datos.id_contrato%></h2>
+            <div style="border: 1px solid black; margin: 4px;">
+                <h3>datos del contrato</h3>
+                <h4>Numero de contrato:<%=datos.id_contrato%></h4>
+                <h4>precio:<%=datos.valor_sev%></h4>
 
-    <div class="grancontenedor">
-        <div class="contenedor">
-            <div class="card">
-                <div class="card-encabezado">
-                    <img src="https://magazine.joomla.org/images/easyblog_images/637/f32ff9eefb43b2acec245bea9b41330e_XL.jpg" alt="">
-                </div>
-                <div class="card-contenido">
-                    <div class="info-personal desplazar">Registrarse como Usuario</div>
-                    <div class="info-personal desplazar"></div>
-                    <div class="info-personal desplazar">
-                        <p></p>
-                    </div>
-                    
-                </div>
-                <div class="card-acciones">
-                    <button class="botones agrandar">
-                        <span class="fas fa-envelope">
-                            <a href="/vistaregistrousu">Registrate</a> 
-                        </span>
-                    </button>
-                </div>
             </div>
-    <footer>
-        <label for="">©Todos los derechos Reservados</label>
-    </footer>
+
+            <div style="margin: 4px;">
+                <h3>datos del asociado</h3>
+                <h4> Asociado que preata el servicio: <%=datos.nombre%> <%=datos.apellido%></h4>
+                <h4>Correo de contacto:<%=datos.correo%></h4>
+                <h4>Telefono de contacto:<%=datos.num_tel%></h4>
+            </div>
+            <div style=" margin: 4px;">
+                <h3>datos del cliente</h3>
+                <h4> cliente: <%=nombre%> <%=apellido%></h4>
+                <h4>Numero de identificacion:<%=documento%></h4>
+                <h4>Correo de contacto:<%=correo%></h4>
+                <h4>Telefono de contacto:<%=telefono%></h4>
+
+            </div>
+
+            <div style=" margin: 4px;">
+                <h3>datos del servicio</h3>
+                <h4>Numero del servicio:<%=datos.id_servicio%></h4>
+                <h4>nombre del serivicio:<%=datos.nombre_serv%></h4> 
+                <p><h4>descripcion del servicio:</h4><%=datos.descripcion%></p>
+            </div>
+
+            </div>
+        </div>
+    <%})%>  
 </body>
 </html>

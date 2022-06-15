@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/filtrodecategoria.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <h1>mis servicios</h1>
+    <% datos.forEach(function (datos){ %>
+        <div style="border: 1px solid black; margin: 2px; padding: 5px;">
+            <h4>nombre del serivicio: <%=datos.nombre_serv%></h4>
+            <p><%=datos.descripcion%></p>
+            <h4>precio:<%=datos.valor_serv%></h4>
+            <form action="">
+                <input type="hidden" name="id" value="<%=datos.id_servicio%>">
+                <input type="hidden" name="nombre" value="<%=datos.nombre_serv%>">
+                <input type="hidden" name="categoria" value="<%=datos.descripcion%>">
+                <input type="hidden" name="" value="<%=datos.valor_serv%>">
+                <input type="submit" value="actualizar servicio">
+                <input type="submit" value="eliminar  servicio">
+            </form>
+        </div>
+        
+    <%})%> 
+</body>
+</html>

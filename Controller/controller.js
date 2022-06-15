@@ -74,7 +74,7 @@ controller.vistaregistrousuario=(req,res,next)=>{
 }
 
 controller.vistaregser=(req,res,next)=>{
-    res.render('reg_servicio');
+    res.render('reg_servicio',{documento:req.session.documento});
 }
 
 controller.datospersonales=(req,res,next)=>{
@@ -241,7 +241,7 @@ controller.registroservicio=(req,res,next)=>{
     const val=req.body.val;
     console.log(doc+nom+ids);
 
-        cnn.query('INSERT INTO tl_servicio SET?',{id_servicio:ids,nombre_serv:nom,documento:doc,categoria:cat,descripcion:des,valor_sev:val},(err,resdb)=>{
+        cnn.query('INSERT INTO tl_servicio SET?',{nombre_serv:nom,documento:doc,categoria:cat,descripcion:des,valor_serv:val},(err,resdb)=>{
             if(err){
                 console.log("error al insertar el servicio");
                 throw err;
@@ -342,8 +342,18 @@ controller.filtrodeservicioporcategoria=(req,res,next)=>{
                     
                 }
                 else{
-                    console.log(results);
-                    res.render('vistaservicioindividual',{datos:results});
+                    const idser=req.session.idservicio;
+                console.log("entra al controlador"+idser);
+                cnn.query('SELECT * FROM tl_resenna WHERE servicio_id=?',[idser],(err,resulta)=>{
+                if(err){
+                    next(new Error("error de consulta del la reseña",err));
+                    
+                }
+                else{
+                    console.log(resulta);
+                    res.render('vistaservicioindividual',{datosresena:resulta,datos:results});
+                }
+            });
                 }
                 
             });
@@ -351,24 +361,65 @@ controller.filtrodeservicioporcategoria=(req,res,next)=>{
         }
 
         controller.resenas=async(req,res,next)=>{
-            const idser=await req.session.idservicio;
-            console.log("entra al controlador"+idser);
-            cnn.query('SELECT * FROM tl_resenna WHERE servicio_id=?',[idser],(err,results)=>{
-                if(err){
-                    next(new Error("error de consulta del la reseña",err));
-                    
-                }
-                else{
-                    console.log(results);
-                    res.render('vistaservicioindividual',{datosresena:resultss});
-                }
-            });
+            
         }
 
     /*-----------------------------------------------------------*/
 
 
 /*---------------------------------------------------------------*/
+
+
+/*------------------->>>revicion de contratos<<<------------------*/
+
+controller.consultacontratoscliente=(req,res,next)=>{
+
+    const documento=req.session.documento;
+    const nombre1= req.session.nombre;
+    console.log(documento+nombre1);
+
+    cnn.query('SELECT * FROM `tl_contrato` INNER JOIN tl_servicio ON(tl_servicio.id_servicio=tl_contrato.id_servicio) INNER JOIN tl_usuarios ON(tl_usuarios.documento=tl_contrato.doc_asociado) WHERE doc_cliente=?',[documento],(err,results)=>{
+        if(err){
+            next(new Error("error de consulta del contratos",err));
+            
+        }
+        else{
+            console.log(results);
+            res.render('contratos_del_cliente',{
+                datos:results,
+                nombre:nombre1,
+                documento:documento,
+                apellido:req.session.apellido,
+                telefono:req.session.telefono,
+                correo:req.session.correo,
+            });
+        }
+    });
+}
+
+/*---------------------------------------------------------------*/
+
+/*-------------------->>>servicios del asociado <<<--------------*/
+
+    controller.consultamisservicios=(req,res,next)=>{
+        const documento=req.session.documento;
+        console.log(documento);
+        
+        cnn.query('SELECT * FROM tl_servicio WHERE documento=?',[documento],(err,results)=>{
+            if(err){
+                next(new Error("error de consulta del servicio",err));
+                
+            }
+            else{
+                console.log(results);
+                res.render('serviciosdelasociado',{datos:results});
+            }
+        });
+
+    }
+
+/*---------------------------------------------------------------*/
+
 
 /*------------------>>>exportar controlador<<<-------------------*/
 module.exports=controller;

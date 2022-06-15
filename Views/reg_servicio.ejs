@@ -32,19 +32,16 @@
 
     <form action="/registroservi" method="post">
         <div class="container">
-            <label for="" class="label">ID Servicio:</label>
-            <input type="text" id="ids" name="ids" class="form-control">
             <label for="">Nombre Servicio:</label> 
             <input type="text" id="nom" name="nom_ser" class="form-control">
-            <label for="">Documento:</label>
-            <input type="text" id="doc" name="doc" class="form-control">
+            <input type="hidden" id="doc" name="doc"  value="<%=documento%>" class="form-control" readonly>
             <p>
                 <label for="">Categoría:</label>
                 <select name="categoria" class="form-control">
-                    <option value="Categorias">Salud</option>
-                    <option value="Categorias">tecnología</option>
-                    <option value="Categorias">Hogar</option>
-                    <option value="Categorias">Mascotas</option>
+                    <option value="Salud">Salud</option>
+                    <option value="Tecnologia">tecnología</option>
+                    <option value="Hogar">Hogar</option>
+                    <option value="Mascotas">Mascotas</option>
                 </select>
             </p>
             <label for="">Descripción:</label>
