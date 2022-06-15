@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>servicio individual</h1>
+    <% datos.forEach(function (datos){ %>
+        <h2>Nombre del Servicio: <%=datos.nombre_serv%></h2>
+        <h3>Nombre del Asociado:<%=datos.nombre%> <%=datos.apellido%></h3>
+        <p><%=datos.descripcion%></p>
+        <h4>Presio por el servicio: <%=datos.valor_sev%></h4>
+    <%})%> 
+
+    <h1>las reseñas</h1>
+    <% datos.forEach(function (datosresena){ %>
+        <h2><%=datosresena.texto%></h2>
+    <%})%> 
+</body>
+</html>

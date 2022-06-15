@@ -32,6 +32,9 @@ rutas.post("/actualizardatos",controller.actudatospersonales);
 
 rutas.get("/seleccioncategoria",controller.vistaflitrocate);
 rutas.post("/serviciosporcategoria",controller.filtrodeservicioporcategoria);
+rutas.post("/servicioindividula",controller.servicioinvidual);
+
+rutas.post("/servicioindividula",controller.resenas);
 
 /*---------------------------------------------------------------*/
 

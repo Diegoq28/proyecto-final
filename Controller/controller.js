@@ -324,6 +324,51 @@ controller.filtrodeservicioporcategoria=(req,res,next)=>{
 
 /*---------------------------------------------------------------*/
 
+/*------------->>>destalles del servicio y reseñas<<<------------*/
+
+
+    /*--->>>renderisado de datos del servicio y sus reseñas<<<---*/
+
+        controller.servicioinvidual=(req,res,next)=>{
+            const idser=req.body.id;
+            
+            cnn.query('SELECT * FROM tl_servicio INNER JOIN tl_usuarios ON(tl_usuarios.documento=tl_servicio.documento) WHERE id_servicio=?',[idser],(err,results)=>{
+
+                const idserv=results[0].id_servicio;
+                req.session.idservicio=idserv;
+
+                if(err){
+                    next(new Error("error de consulta",err));
+                    
+                }
+                else{
+                    console.log(results);
+                    res.render('vistaservicioindividual',{datos:results});
+                }
+                
+            });
+        
+        }
+
+        controller.resenas=async(req,res,next)=>{
+            const idser=await req.session.idservicio;
+            console.log("entra al controlador"+idser);
+            cnn.query('SELECT * FROM tl_resenna WHERE servicio_id=?',[idser],(err,results)=>{
+                if(err){
+                    next(new Error("error de consulta del la reseña",err));
+                    
+                }
+                else{
+                    console.log(results);
+                    res.render('vistaservicioindividual',{datosresena:resultss});
+                }
+            });
+        }
+
+    /*-----------------------------------------------------------*/
+
+
+/*---------------------------------------------------------------*/
 
 /*------------------>>>exportar controlador<<<-------------------*/
 module.exports=controller;
