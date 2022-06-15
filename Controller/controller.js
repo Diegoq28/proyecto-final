@@ -96,7 +96,15 @@ controller.datospersonales=(req,res,next)=>{
     
 }
 
+/* controller.vistadeserviciosf=(rq,res,next)=>{
+    res.render('vistaservicioxcategoria');
+} */
+
 /*---------------------------------------------------------------*/
+
+
+
+/*------------------------>>> inicio de sesion<<<-----------------*/
 
 controller.iniciosesion=async(req,res,next)=>{
     const usu=await req.body.username;
@@ -141,7 +149,9 @@ controller.iniciosesion=async(req,res,next)=>{
     }); 
 }
 
-/*-------------------------------->>><<<-------------------------------*/
+/*---------------------------------------------------------------*/
+
+/*-------------------------->>>cerrar sesion<<<---------------------*/
 
 controller.cerrarsesion=(req,res,next)=>{
     req.session.destroy(()=>{
@@ -149,7 +159,7 @@ controller.cerrarsesion=(req,res,next)=>{
     });
 }
 
-/*---------------------------------------------------------------*/
+/*----------------------------------------------------------------*/
 /*--------------------->>>registro de asociado<<<-----------------*/
 
     controller.registrarasociado=(req,res,next)=>{
@@ -271,6 +281,49 @@ controller.actudatospersonales=(req,res,next)=>{
 }
 
 /*---------------------------------------------------------------*/
+
+/*----------------->>>flitro de categorias<<<--------------------*/
+
+controller.vistaflitrocate=(req,res,next)=>{
+    cnn.query('SELECT categoria,COUNT(tl_servicio.categoria)AS"Cantidad" FROM `tl_servicio` GROUP BY categoria',(err,results)=>{
+        if(err){
+            next(new Error("error de consulta",err));
+            
+        }
+        else{
+            res.render('vista_flitro_categoria',{datos:results});
+        }
+    });
+}
+
+/*---------------------------------------------------------------*/
+
+/*------------->>>flitro de servicio por categoria<<<-------------*/
+
+controller.filtrodeservicioporcategoria=(req,res,next)=>{
+
+    const categoria= req.body.categorian;
+    req.session.tipocategoria=categoria;
+    console.log(categoria);
+
+    cnn.query('SELECT * FROM tl_servicio WHERE categoria=?',[categoria],(err,results)=>{
+        
+        if(err){
+            next(new Error("error de consulta",err));
+            
+        }
+        else{
+            console.log(results);
+            res.render('vistaservicioxcategoria',{datos:results,nomcat:req.session.tipocategoria});
+            
+            console
+        }
+
+    });
+}
+
+/*---------------------------------------------------------------*/
+
 
 /*------------------>>>exportar controlador<<<-------------------*/
 module.exports=controller;

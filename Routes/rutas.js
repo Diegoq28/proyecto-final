@@ -30,7 +30,8 @@ rutas.get("/vistaadmin",controller.vistaadmin);
 rutas.get("/datosusuario",controller.datospersonales);
 rutas.post("/actualizardatos",controller.actudatospersonales);
 
-
+rutas.get("/seleccioncategoria",controller.vistaflitrocate);
+rutas.post("/serviciosporcategoria",controller.filtrodeservicioporcategoria);
 
 /*---------------------------------------------------------------*/
 

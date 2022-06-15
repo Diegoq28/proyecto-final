@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/filtrodecategoria.js"></script>
+
+    <title>vista_flitro_categoria.</title>
+</head>
+<body>
+    <h1>vista_flitro_categoria</h1>
+    <% datos.forEach(function (datos){ %>
+        <h2><%=datos.categoria%></h2>
+        <p>Aqui encontraras todos los servicios de <%=datos.categoria%></p>
+        <h3>cantidad de servicios: <%=datos.Cantidad%></h3>
+        <form method="post" action="/serviciosporcategoria" >
+            <input type="hidden"  value="<%=datos.categoria%>" name="categorian" class="cate" readonly>
+            <input type="submit" value="Mirar Servicios">
+        </form>
+
+    <%})%>    
+</body>
+</html>

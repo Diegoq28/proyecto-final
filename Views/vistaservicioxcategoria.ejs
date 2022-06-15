@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Servicios de: <%=nomcat%> </h1>
+    <% datos.forEach(function (datos){ %>
+        <div style="border: 1px solid black; margin: 2px; padding: 5px;">
+            <h4>nombre del serivicio: <%=datos.nombre_serv%></h4>
+            <p><%=datos.descripcion%></p>
+            <h4>precio:<%=datos.valor_sev%></h4>
+        
+            <form action="" method="post">
+                <input type="hidden"  value="<%=datos.id_servicio%>" name="categorian" class="cate" readonly>
+                <input type="submit" value="Mirar Servicio">
+            </form>
+        </div>
+    <%})%>  
+</body>
+</html>
