@@ -344,14 +344,24 @@ controller.filtrodeservicioporcategoria=(req,res,next)=>{
                 else{
                     const idser=req.session.idservicio;
                 console.log("entra al controlador"+idser);
-                cnn.query('SELECT * FROM tl_resenna WHERE servicio_id=?',[idser],(err,resulta)=>{
+                cnn.query('SELECT  * FROM tl_resenna INNER JOIN tl_usuarios ON (tl_usuarios.documento=tl_resenna.doc_cliente) WHERE servicio_id=?',[idser],(err,resulta)=>{
                 if(err){
                     next(new Error("error de consulta del la reseña",err));
                     
                 }
                 else{
+                    console.log(results);
                     console.log(resulta);
-                    res.render('vistaservicioindividual',{datosresena:resulta,datos:results});
+                    const cantidad=resulta.length;
+                    const doc=req.session.documento;
+                    //const docaso=resulta[0].doc_asociado;
+                    console.log(doc);
+                    res.render('vistaservicioindividual',{datosresena:resulta,datos:results,
+                        cantidad:cantidad,
+                        documento:doc,
+                        //docaso:docaso,
+                        id:idser
+                    });
                 }
             });
                 }
@@ -359,11 +369,6 @@ controller.filtrodeservicioporcategoria=(req,res,next)=>{
             });
         
         }
-
-        controller.resenas=async(req,res,next)=>{
-            
-        }
-
     /*-----------------------------------------------------------*/
 
 
@@ -413,6 +418,35 @@ controller.consultacontratoscliente=(req,res,next)=>{
             else{
                 console.log(results);
                 res.render('serviciosdelasociado',{datos:results});
+            }
+        });
+
+    }
+
+/*---------------------------------------------------------------*/
+
+/*-------------------->>>ingresar reseña<<<----------------------*/
+
+    controller.ingresarresena=(req,res,next)=>{
+        const documentodelcliente=req.body.doccliente;
+        const documentoasociado=req.body.docasociado;
+        const idservicio=req.body.idservicio;
+        const texto=req.body.texto;
+
+        console.log(documentodelcliente);
+        console.log(documentoasociado);
+        console.log(idservicio);
+        console.log(texto);
+
+        cnn.query('INSERT INTO tl_resenna SET?',{doc_asociado:documentoasociado,doc_cliente:documentodelcliente,servicio_id:idservicio,texto:texto},(err,resdb)=>{
+            if(err){
+                console.log("error al insertar la reseña");
+                throw err;
+                res.redirect('vistausu');
+            }
+            else{
+                console.log("reseña Insertada");
+                res.redirect('vistausu');
             }
         });
 

@@ -34,11 +34,13 @@ rutas.get("/seleccioncategoria",controller.vistaflitrocate);
 rutas.post("/serviciosporcategoria",controller.filtrodeservicioporcategoria);
 rutas.post("/servicioindividula",controller.servicioinvidual);
 
-rutas.post("/servicioindividula",controller.resenas);
-
 rutas.get("/miscontratos",controller.consultacontratoscliente);
 
 rutas.get("/misservicios",controller.consultamisservicios);
+
+rutas.post("/ingresaresena",controller.ingresarresena);
+
+
 /*---------------------------------------------------------------*/
 
 /*-------------------------------->>>Exportar modulo<<<-------------------------------*/

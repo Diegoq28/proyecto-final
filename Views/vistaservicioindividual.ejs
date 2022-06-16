@@ -11,13 +11,29 @@
     <% datos.forEach(function (datos){ %>
         <h2>Nombre del Servicio: <%=datos.nombre_serv%></h2>
         <h3>Nombre del Asociado:<%=datos.nombre%> <%=datos.apellido%></h3>
-        <p><%=datos.descripcion%></p>
-        <h4>Presio por el servicio: <%=datos.valor_sev%></h4>
+        <p><h3>descripcion: </h3><%=datos.descripcion%></p>
+        <h4>Presio por el servicio: <%=datos.valor_serv%></h4>
+        <form action="">
+            <input type="button" value="contratar servicio">
+        </form>
+    <h2>reseñas: <%=cantidad%></h2>
+    <% datosresena.forEach(function (datosresena){ %>
+        <div style="border: 1px solid black; width:20%;">
+            <p>
+                <h5><%=datosresena.nombre%> <%=datosresena.apellido%> diece:</h5>
+                <%=datosresena.texto%>
+            </p>
+        </div>
+            
+    <%})%>  
     <%})%> 
-
-    <h1>las reseñas</h1>
-    <% datos.forEach(function (datosresena){ %>
-        <h2><%=datosresena.texto%></h2>
-    <%})%> 
+    <h3>deja tu reseña</h3>
+    <form method="post" action="/ingresaresena">
+        <input type="hidden" name="doccliente" value="<%=documento%>">
+        <input type="hidden" name="docasociado" value="<% datos.forEach(function (datos){ %><%=datos.documento%><%})%>">
+        <input type="hidden" name="idservicio" value="<%=id%>">
+        <input type="text" name="texto" style="width: 250px;height: 80px;">
+        <input type="submit" value=" ingresar comentario">
+    </form> 
 </body>
 </html>
