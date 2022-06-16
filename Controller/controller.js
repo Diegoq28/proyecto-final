@@ -329,8 +329,8 @@ controller.filtrodeservicioporcategoria=(req,res,next)=>{
 
     /*--->>>renderisado de datos del servicio y sus reseñas<<<---*/
 
-        controller.servicioinvidual=(req,res,next)=>{
-            const idser=req.body.id;
+        controller.servicioinvidual=async(req,res,next)=>{
+            const idser=await req.body.id;
             
             cnn.query('SELECT * FROM tl_servicio INNER JOIN tl_usuarios ON(tl_usuarios.documento=tl_servicio.documento) WHERE id_servicio=?',[idser],(err,results)=>{
 
@@ -454,6 +454,80 @@ controller.consultacontratoscliente=(req,res,next)=>{
 
 /*---------------------------------------------------------------*/
 
+
+/*---------------------->>>consultar servicio<<<------------------*/
+
+controller.consultaservicios=(req,res,next)=>{
+    cnn.query('SELECT * FROM tl_servicio',(err,results)=>{
+        if(err){
+            console.log("error al consultar los servicios");
+            throw err;
+            res.redirect('vistausu');
+        }
+        else{
+            console.log("res");
+            res.render('consultaservicios',{datos:results});
+        }
+    })
+}
+/*---------------------------------------------------------------*/
+
+
+/*----------------->>>insertar contrato<<<-----------------------*/
+
+    controller.insertatcontrato=(req,res,next)=>{
+        const idservicio=req.body.id;
+        const documentocli=req.body.doccli;
+        const documentoaso=req.body.docaso;
+        const valor=req.body.valor;
+        
+        console.log(idservicio);
+        console.log(documentocli);
+        console.log(documentoaso);
+        console.log(valor);
+
+        cnn.query('INSERT INTO tl_contrato SET?',{id_servicio:idservicio,doc_cliente:documentocli,doc_asociado:documentoaso,valor_servicio:valor},(err,resdb)=>{
+            if(err){
+                console.log("error al insertar el contrato");
+                throw err;
+                res.redirect('vistausu');
+            }
+            else{
+                console.log("reseña Insertada");
+                res.redirect('miscontratos');
+            }
+        });
+
+    }
+
+/*---------------------------------------------------------------*/
+
+/*-------------------------------->>><<<-------------------------------*/
+controller.consultacontratosasociado=(req,res,next)=>{
+
+    const documento=req.session.documento;
+    const nombre1= req.session.nombre;
+    console.log(documento+nombre1);
+
+    cnn.query('SELECT * FROM `tl_contrato` INNER JOIN tl_servicio ON(tl_servicio.id_servicio=tl_contrato.id_servicio) INNER JOIN tl_usuarios ON(tl_usuarios.documento=tl_contrato.doc_asociado) WHERE doc_asociado=?',[documento],(err,results)=>{
+        if(err){
+            next(new Error("error de consulta del contratos",err));
+            
+        }
+        else{
+            console.log(results);
+            res.render('contratosasociado',{
+                datos:results,
+                nombre:nombre1,
+                documento:documento,
+                apellido:req.session.apellido,
+                telefono:req.session.telefono,
+                correo:req.session.correo,
+            });
+        }
+    });
+}
+/*---------------------------------------------------------------*/
 
 /*------------------>>>exportar controlador<<<-------------------*/
 module.exports=controller;

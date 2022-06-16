@@ -13,8 +13,12 @@
         <h3>Nombre del Asociado:<%=datos.nombre%> <%=datos.apellido%></h3>
         <p><h3>descripcion: </h3><%=datos.descripcion%></p>
         <h4>Presio por el servicio: <%=datos.valor_serv%></h4>
-        <form action="">
-            <input type="button" value="contratar servicio">
+        <form action="/ingresacontrato" method="post">
+            <input type="hidden" name="id" value="<%=datos.id_servicio%>" id="">
+            <input type="hidden" name="doccli" value="<%=documento%>" id="">
+            <input type="hidden" name="docaso" value="<%=datos.documento%>" id="">
+            <input type="hidden" name="valor" value="<%=datos.valor_serv%>" id="">
+            <input type="submit" value="contratar servicio">
         </form>
     <h2>reseñas: <%=cantidad%></h2>
     <% datosresena.forEach(function (datosresena){ %>

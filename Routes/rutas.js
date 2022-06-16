@@ -33,13 +33,14 @@ rutas.post("/actualizardatos",controller.actudatospersonales);
 rutas.get("/seleccioncategoria",controller.vistaflitrocate);
 rutas.post("/serviciosporcategoria",controller.filtrodeservicioporcategoria);
 rutas.post("/servicioindividula",controller.servicioinvidual);
+rutas.get("/consultaservicios",controller.consultaservicios);
 
 rutas.get("/miscontratos",controller.consultacontratoscliente);
-
+rutas.get("/miscontratosaso",controller.consultacontratosasociado);
 rutas.get("/misservicios",controller.consultamisservicios);
 
 rutas.post("/ingresaresena",controller.ingresarresena);
-
+rutas.post("/ingresacontrato",controller.insertatcontrato);
 
 /*---------------------------------------------------------------*/
 
