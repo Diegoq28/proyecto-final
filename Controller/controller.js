@@ -314,7 +314,7 @@ controller.filtrodeservicioporcategoria=(req,res,next)=>{
         }
         else{
             console.log(results);
-            res.render('vistaservicioxcategoria',{datos:results,nomcat:req.session.tipocategoria});
+            res.render('vistaservicioxcategoria',{datos:results,nomcat:req.session.tipocategoria,nombre:req.session.nombre,apellido:req.session.apellido});
             
             console
         }
@@ -360,7 +360,9 @@ controller.filtrodeservicioporcategoria=(req,res,next)=>{
                         cantidad:cantidad,
                         documento:doc,
                         //docaso:docaso,
-                        id:idser
+                        id:idser,
+                        nombre:req.session.nombre,
+                        apellido:req.session.apellido
                     });
                 }
             });
