@@ -217,18 +217,25 @@
                 </div>
             </div>
 
-                   <!--========================CONTENIDO==================================================================================================-->
-    <h1>vista_flitro_categoria</h1>
+<!--========================CONTENIDO==================================================================================================-->
+    <h2>Filtro Categorias</h2>
     <% datos.forEach(function (datos){ %>
-        <h2><%=datos.categoria%></h2>
-        <p>Aqui encontraras todos los servicios de <%=datos.categoria%></p>
-        <h3>cantidad de servicios: <%=datos.Cantidad%></h3>
-        <form method="post" action="/serviciosporcategoria" >
-            <input type="hidden"  value="<%=datos.categoria%>" name="categorian" class="cate" readonly>
-            <input type="submit" value="Mirar Servicios">
-        </form>
+        <div class="card mb-4">
+            <div class="card-header">
+                    <h2><%=datos.categoria%></h2>
+            </div>
+            <div class="card-body">
+                <p>Aqui encontraras todos los servicios de <%=datos.categoria%></p>
+                    <h4>cantidad de servicios: <%=datos.Cantidad%></h4>
+                <form method="post" action="/serviciosporcategoria" >
+                    <input type="hidden"  value="<%=datos.categoria%>" name="categorian" class="cate" readonly>
+                    <input type="submit" value="Mirar Servicios">
+                </form>
+            </div>
+        </div>
 
-    <%})%>    
+    <%})%> 
+
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

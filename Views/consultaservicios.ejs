@@ -215,19 +215,25 @@
             </div>
 
                    <!--========================CONTENIDO==================================================================================================-->
-    <h1>Servicios </h1>
+    <h2>Servicios </h2>
     <% datos.forEach(function (datos){ %>
-        <div style="border: 1px solid black; margin: 2px; padding: 5px;">
-            <h4>nombre del serivicio: <%=datos.nombre_serv%></h4>
-            <p><%=datos.descripcion%></p>
-            <h4>precio:<%=datos.valor_serv%></h4>
-        
-            <form action="/servicioindividula" method="post">
-                <input type="hidden"  value="<%=datos.id_servicio%>" name="id" class="cate" readonly>
-                <input type="submit" value="Mirar Servicio">
-            </form>
-        </div>
-    <%})%>  
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>Nombre del servicio: <%=datos.nombre_serv%></h4>
+            </div>
+            <div class="card-body">
+                <p><%=datos.descripcion%></p>
+                <h4>Precio:<%=datos.valor_serv%></h4>
+                <form action="/servicioindividula" method="post">
+                    <input type="hidden"  value="<%=datos.id_servicio%>" name="id" class="cate" readonly>
+                    <input type="submit" value="Mirar Servicio">
+                </form>
+            </div>
+        </div> 
+    <%})%> 
+    
+
+
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
