@@ -42,7 +42,12 @@ controller.vistaaso=(req,res,next)=>{
         res.redirect('login')
     }
     else{
-        res.render('home_asociado',{nombre: req.session.nombre});
+        res.render('home_asociado',{
+            nombre: req.session.nombre,
+            apellido: req.session.apellido,
+            documento:req.session.documento,
+            perfil: req.session.perfil
+        });
     }
     
 }
@@ -129,6 +134,7 @@ controller.iniciosesion=async(req,res,next)=>{
             req.session.telefono=results[0].num_tel;
             req.session.direccion=results[0].direccion;
             req.session.pass=results[0].password;
+            req.session.perfil=results[0].perfil;
             console.log(rol+".."+uss+".."+doc);
             //res.redirect('vistausu');
             if(rol=="Asociado"){
@@ -277,7 +283,7 @@ controller.actudatospersonales=(req,res,next)=>{
         else{
                 res.redirect('/login');
         }
-    })
+    });
 }
 
 /*---------------------------------------------------------------*/
@@ -530,6 +536,53 @@ controller.consultacontratosasociado=(req,res,next)=>{
     });
 }
 /*---------------------------------------------------------------*/
+
+
+/*---------------------->>>Actualizar servicio<<<----------------*/
+
+    controller.vistaactuser=(req,res,next)=>{
+        const id= req.body.idservicio;
+        console.log(id+"este es el  id");
+        cnn.query('SELECT * FROM tl_servicio WHERE id_servicio=?',[id],(err,results)=>{
+            if(err){
+                console.log("error al insertar el contrato");
+                throw err;
+                res.redirect('misservicios');
+            }
+            else{
+                console.log(results);
+                res.render('actualizarservicio',{datos:results,nombre:req.session.nombre,apellido:req.session.apellido});
+            }
+        });
+    }
+
+    controller.actualizarservicio=(req,res,next)=>{
+        const id=req.body.id;
+        const nombre=req.body.nom_ser;
+        const categoria=req.body.categoria;
+        const descripcion=req.body.des;
+        const valor=req.body.val;
+
+        console.log(id);
+        console.log(nombre);
+        console.log(categoria);
+        console.log(descripcion);
+        console.log(valor);
+
+        cnn.query('UPDATE tl_servicio  SET nombre_serv="'+nombre+'",categoria="'+categoria+'",descripcion="'+descripcion+'",valor_serv="'+valor+'" WHERE id_servicio="'+id+'" ',(err,resdb)=>{
+            if(err){
+                console.log("Error al actualizar")
+                res.redirect('/vistsdeaso');
+                throw err;
+            }
+            else{
+                    res.redirect('/vistsdeaso');
+            }
+        });
+
+    }
+/*---------------------------------------------------------------*/
+
 
 /*------------------>>>exportar controlador<<<-------------------*/
 module.exports=controller;

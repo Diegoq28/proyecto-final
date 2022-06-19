@@ -37,7 +37,10 @@ rutas.get("/consultaservicios",controller.consultaservicios);
 
 rutas.get("/miscontratos",controller.consultacontratoscliente);
 rutas.get("/miscontratosaso",controller.consultacontratosasociado);
+
 rutas.get("/misservicios",controller.consultamisservicios);
+rutas.post("/vistaactualizarserv",controller.vistaactuser);
+rutas.post("/actualizarservicio",controller.actualizarservicio);
 
 rutas.post("/ingresaresena",controller.ingresarresena);
 rutas.post("/ingresacontrato",controller.insertatcontrato);

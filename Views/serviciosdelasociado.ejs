@@ -230,13 +230,12 @@
                     <h4>precio:<%=datos.valor_serv%></h4>
                 </div>
                 <div class="card-body">
-                    <form action="">
-                        <input type="hidden" name="id" value="<%=datos.id_servicio%>">
+                    <form action="/vistaactualizarserv" method="post">
+                        <input type="hidden" name="idservicio" value="<%=datos.id_servicio%>">
                         <input type="hidden" name="nombre" value="<%=datos.nombre_serv%>">
                         <input type="hidden" name="categoria" value="<%=datos.descripcion%>">
                         <input type="hidden" name="" value="<%=datos.valor_serv%>">
                         <input type="submit" value="actualizar servicio">
-                        <input type="submit" value="eliminar  servicio">
                     </form>
                 </div>
             </div>
