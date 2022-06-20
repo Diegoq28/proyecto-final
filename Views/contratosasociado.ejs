@@ -18,7 +18,7 @@
    <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
        <!-- Sidebar - Brand -->
-       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/vistausu">
+       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="vistsdeaso">
            
            <div class="sidebar-brand-text mx-3">Preser</div>
        </a>
@@ -216,39 +216,41 @@
        </div>
 
 <!--=====================================ASOCIADO=================================================================================-->
-    <h1>contratos de <%=nombre%></h1>
+    <h1>Contratos de <%=nombre%></h1>
     <% datos.forEach(function (datos){ %>
-        <div style="border: 1px solid black; margin: 12px; padding: 5px;">
-            <h2>contrato#<%=datos.id_contrato%></h2>
-            <div style="border: 1px solid black; margin: 4px;">
-                <h3>datos del contrato</h3>
-                <h4>Numero de contrato:<%=datos.id_contrato%></h4>
-                <h4>precio:<%=datos.valor_serv%></h4>
-
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2>contrato#<%=datos.id_contrato%></h2>
             </div>
-
-            <div style="margin: 4px;">
-                <h3>datos del asociado</h3>
-                <h4> Asociado que preata el servicio: <%=datos.nombre%> <%=datos.apellido%></h4>
-                <h4>Correo de contacto:<%=datos.correo%></h4>
-                <h4>Telefono de contacto:<%=datos.num_tel%></h4>
-            </div>
-            <div style=" margin: 4px;">
-                <h3>datos del cliente</h3>
-                <h4> cliente: <%=nombre%> <%=apellido%></h4>
-                <h4>Numero de identificacion:<%=documento%></h4>
-                <h4>Correo de contacto:<%=correo%></h4>
-                <h4>Telefono de contacto:<%=telefono%></h4>
-
-            </div>
-
-            <div style=" margin: 4px;">
-                <h3>datos del servicio</h3>
-                <h4>Numero del servicio:<%=datos.id_servicio%></h4>
-                <h4>nombre del serivicio:<%=datos.nombre_serv%></h4> 
-                <p><h4>descripcion del servicio:</h4><%=datos.descripcion%></p>
-            </div>
-
+            <div class="card-body">
+                <div>
+                    <h3><b>Datos del contrato</b></h3>
+                    <h5>Numero de contrato:<%=datos.id_contrato%></h5>
+                    <h5>precio:<%=datos.valor_serv%></h5>
+    
+                </div>
+    
+                <div style="margin: 4px;">
+                    <h3><b>Datos del asociado</b></h3>
+                    <h5> Asociado que presta el servicio: <%=datos.nombre%> <%=datos.apellido%></h5>
+                    <h5>Correo de contacto:<%=datos.correo%></h5>
+                    <h5>Telefono de contacto:<%=datos.num_tel%></h5>
+                </div>
+                <div style=" margin: 4px;">
+                    <h3><b>Datos del cliente</b></h3>
+                    <h5>cliente: <%=nombre%> <%=apellido%></h5>
+                    <h5>Numero de identificacion:<%=documento%></h5>
+                    <h5>Correo de contacto:<%=correo%></h5>
+                    <h5>Telefono de contacto:<%=telefono%></h5>
+    
+                </div>
+    
+                <div style=" margin: 4px;">
+                    <h3><b>Datos del servicio</b></h3>
+                    <h5>Numero del servicio:<%=datos.id_servicio%></h5>
+                    <h5>nombre del serivicio:<%=datos.nombre_serv%></h5> 
+                    <p><h4>descripcion del servicio:</h4><%=datos.descripcion%></p>
+                </div>
             </div>
         </div>
     <%})%>  
