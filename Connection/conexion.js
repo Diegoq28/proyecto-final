@@ -11,10 +11,10 @@
 
     module.exports=()=>
     mysql.createConnection({
-        host:'localhost',
-        user:'root',
-        password: '',
-        database:'preser'
+        host:'mysql-preser.alwaysdata.net',
+        user:'preser',
+        password: 'Preser_12344321',
+        database:'preser_preser'
     });
 
 /*---------------------------------------------------------------*/
